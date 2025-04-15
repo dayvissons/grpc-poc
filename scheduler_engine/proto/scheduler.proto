@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package scheduler;
+
+service TaskScheduler {
+  rpc ScheduleTask (ScheduleRequest) returns (ScheduleResponse);
+  rpc ListTasks (Empty) returns (TaskList);
+}
+
+message ScheduleRequest {
+  string id = 1;
+  string task_name = 2;
+  string execute_at = 3;
+}
+
+message ScheduleResponse {
+  string status = 1;
+  string message = 2;
+}
+
+message Task {
+  string id = 1;
+  string task_name = 2;
+  string execute_at = 3;
+}
+
+message TaskList {
+  repeated Task tasks = 1;
+}
+
+message Empty {}
